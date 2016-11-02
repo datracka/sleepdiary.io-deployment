@@ -1,13 +1,17 @@
-## localhosst
+## localhost
 
-1 - clone the project and jump into the run folder
 
-check that ports 80, 8000 and 5432 and not already busy. If so,
+Clone the project and jump into the run folder.
+You need to have already installed docker https://docs.docker.com/engine/installation/
+Check that ports 80, 8000 and 5432 and not already busy. If it is so run,
 
-2 - $ docker-compose build --no-cache
-3 - $ docker-compose up -d
+- $ docker-compose build --no-cache
+- $ docker-compose up -d
 
 if it is the first time you have to run migrations: 
 
-4 - $ docker-compose run back_python_accounts_calendar /usr/local/bin/python manage.py migrate
-5 - open a browser and run http://localhost. Create an user with sign up form. 
+- $ docker-compose run back_python_accounts_calendar /usr/local/bin/python manage.py migrate
+
+open a browser and run http://localhost. Create an user with sign up form. 
+
+enjoy it! 
