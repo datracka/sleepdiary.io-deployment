@@ -19,7 +19,7 @@ services:
       - "8000"
     links:
       - db_postgres:db_postgres
-    env_file: .env
+    env_file: .prod.env
     environment:
       DEBUG: 'true'
     command: /usr/local/bin/gunicorn sleepdiary_backend.wsgi:application --bind 0.0.0.0:8000 --workers 3
@@ -28,7 +28,7 @@ services:
     restart: 'true'
     build: ./postgres
     env_file:
-      - .env
+      - .prod.env
     ports:
       - "5432:5432"
     volumes:
