@@ -4,9 +4,12 @@ Clone the project and jump into the run folder.
 
 You need to have already installed docker https://docs.docker.com/engine/installation/
 
-Check that ports 80, 8000 and 5432 and not already busy. If it is so run,
+Check that ports 80, 8000 and 5432 and not already busy. 
 
 If you don't have one .env already rename the `.env.example` to `.env`
+
+Run:
+
 - `$ docker-compose build --no-cache`
 - `$ docker-compose up -d`
 
