@@ -4,11 +4,13 @@ services:
     restart: always
     build: ./angular2
     volumes:
-      - /app/sleepdiary.io/dist
+      - /app/sleepdiary.io/dist_prod
     volumes_from:
       - back_python_accounts_calendar
     ports:
       - "80:80"
+    environment:
+      FOLDER: 'dist'
     links:
       - back_python_accounts_calendar:back_python_accounts_calendar
 

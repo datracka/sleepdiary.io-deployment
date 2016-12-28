@@ -27,4 +27,9 @@ enjoy it!
 - https://semaphoreci.com/community/tutorials/dockerizing-a-python-django-web-application
 - https://github.com/erroneousboat/docker-django
 
+# backup restore db
+
+Backup:  $ pg_dump -U {user-name} {source_db} -f {dumpfilename.sql}
+Restore: $ psql -U {user-name} -d {desintation_db}-f {dumpfilename.sql}
+
 

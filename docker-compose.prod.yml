@@ -9,6 +9,8 @@ services:
       - back_python_accounts_calendar
     ports:
       - "80:80"
+    environment:
+      FOLDER: 'dist_prod'
     links:
       - back_python_accounts_calendar:back_python_accounts_calendar
 
