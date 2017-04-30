@@ -30,9 +30,14 @@ RUN cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
 RUN rm -v /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx/
 
-#ssl
+# ssl
 ADD ssl/ssl-sleepdiary.io.conf /etc/nginx/snippets/ssl-sleepdiary.io.conf
 ADD ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
+
+# allow http in firewall
+
+RUN ufw allow 'Nginx Full'
+RUN ufw delete allow 'Nginx HTTP'
 
 # copy server block
 ADD sites-enabled/ /etc/nginx/sites-enabled
