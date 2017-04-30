@@ -1,7 +1,7 @@
 version: '2'
 services:
   front_angular2:
-    restart: always
+    restart: 'always'
     build: ./angular2
     volumes:
       - /app/sleepdiary.io/dist_prod
@@ -15,7 +15,7 @@ services:
       - back_python_accounts_calendar:back_python_accounts_calendar
 
   back_python_accounts_calendar:
-    restart: always
+    restart: 'always'
     build: ./python
     expose:
       - "8000"
@@ -27,7 +27,7 @@ services:
     command: /usr/local/bin/gunicorn sleepdiary_backend.wsgi:application --bind 0.0.0.0:8000 --workers 3
 
   db_postgres:
-    restart: 'true'
+    restart: 'always'
     build: ./postgres
     env_file:
       - .prod.env
