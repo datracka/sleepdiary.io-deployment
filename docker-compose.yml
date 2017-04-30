@@ -2,7 +2,9 @@ version: '2'
 services:
   front_angular2:
     restart: 'no'
-    build: ./angular2
+    build:
+      context: ./angular2
+      dockerfile: Dockerfile.dev
     volumes:
       - /app/sleepdiary.io/dist_prod
     volumes_from:
