@@ -1,23 +1,28 @@
 FROM tutum/nginx
 
-RUN add-apt-repository ppa:certbot/certbot
-
 RUN apt-get update && apt-get install -y \
         git \
-        vim
+        vim \
+        software-properties-common
+
+RUN add-apt-repository -y ppa:certbot/certbot
+RUN apt-get update -y
 
 # SSL certificate https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04
 # https://certbot.eff.org/#ubuntutyakkety-nginx
-RUN sudo apt-get install certbot -y
-
-RUN certbot certonly --webroot -w /app/sleepdiary.io/dist_prod -d sleepdiary.io -d www.sleepdiary.io
+RUN apt-get install certbot -y
 
 RUN git clone https://github.com/datracka/sleepdiary.io.git /app/sleepdiary.io
-
 WORKDIR /app/sleepdiary.io/
-
 #checkout production branch
 RUN git checkout develop
+
+RUN certbot certonly \
+    --email datracka@gmail.com \
+    --agree-tos \
+    --text \
+    --non-interactive \
+    --webroot -w /app/sleepdiary.io/dist_prod -d sleepdiary.io -d www.sleepdiary.io
 
 # add custom server block
 RUN cp /app/sleepdiary.io/src/index.html /app/sleepdiary.io/dist/index.html
