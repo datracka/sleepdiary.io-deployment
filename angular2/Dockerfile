@@ -1,4 +1,4 @@
-FROM tutum/nginx
+FROM nginx
 
 RUN apt-get update && apt-get install -y \
         git \
