@@ -11,6 +11,7 @@ services:
       - back_python_accounts_calendar
     ports:
       - "80:80"
+      - "443:443"
     environment:
       FOLDER: 'dist_prod'
     links:

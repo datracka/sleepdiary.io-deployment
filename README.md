@@ -32,4 +32,41 @@ enjoy it!
 Backup:  $ pg_dump -U {user-name} {source_db} -f {dumpfilename.sql}
 Restore: $ psql -U {user-name} -d {desintation_db}-f {dumpfilename.sql}
 
+# manual SSL setup (docker configuration WIP)
+
+#### install missing packages
+- apt-get install software-properties-common -y && apt-get install gpg -y
+- add-apt-repository -y ppa:certbot/certbot
+- apt-get update -y
+- apt-get install certbot -y
+
+#### create certificate
+- certbot certonly \
+      --email datracka@gmail.com \
+      --agree-tos \
+      --text \
+      --non-interactive \
+      --webroot -w /app/sleepdiary.io/dist_prod -d app.sleepdiary.io
+- openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+
+#### create support files for serverblock
+
+- mkdir /etc/nginx/snippets/
+- vi /etc/nginx/snippets/ssl-app.sleepdiary.io.conf 
+ (copy content from ssl.app.sleepdiary.io.cong)
+- vi /etc/nginx/snippets/ssl-params.conf
+ (copy content from ssl-params.conf)
+ 
+#### configure server block
+- cp /etc/nginx/conf.d/sleepdiary.io.conf /etc/nginx/conf.d/sleepdiary.io.conf.back 
+- rm -v /etc/nginx/conf.d/sleepdiary.io.conf
+- vi /etc/nginx/conf.d/app.sleepdiary.io.conf
+(copy content from conf.d/app.sleepdiary.ssl.conf)
+
+#### restart services
+
+- docker stop <id_container>
+- docker start <id_container>
+ 
+      
 
