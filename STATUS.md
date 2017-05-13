@@ -7,5 +7,10 @@ The error looks that it does not found the "host" link to Backend
 
 - The problem looks is that 443 is not open
 
-Solution: run docker-compose with ports 80 and 443 
+Solution: 
+
+- run docker-compose with ports 80 and 443
+- apply (again) manual SSL configuration
+
+it should work afterwards!
 
