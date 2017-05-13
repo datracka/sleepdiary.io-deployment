@@ -49,6 +49,4 @@ RUN ufw allow 'Nginx Full'
 RUN ufw delete allow 'Nginx HTTP'
 
 # copy server block
-ADD sites-enabled/ /etc/nginx/sites-enabled
-# enable gzip on types other than html
-# ADD conf.d/ /etc/nginx/conf.d
+ADD conf.d/ /etc/nginx/conf.d
